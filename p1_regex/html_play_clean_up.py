@@ -3,6 +3,8 @@
 import sys
 import re
 
+output_path = "HenryV.txt"
+
 def main(html_path):
     with open(html_path) as html_file:
         play = html_file.read()
@@ -16,7 +18,8 @@ def main(html_path):
     play = strip_tag_and_contents(play, "table")
     play = strip_tags(play)
 
-    print(play)
+    with open(output_path, "w") as writer:
+        writer.write(play)
 
 def strip_preamble(play):
     return re.sub("<!DOCTYPE[ \w\"\-\/\.\:]+>[\n]", #Pull whole contents of <!DOCTYPE > tag
@@ -63,4 +66,4 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         main(sys.argv[1])
     else:
-        print("Be sure you include the relative path to the csv input")
+        print("Be sure you include the relative path to the html play input")
