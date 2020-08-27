@@ -12,7 +12,6 @@ xml_out = "output.xml"
 def main(csv_path):
     root = ET.Element('budget')
 
-
     with open(csv_path, newline='') as input_file:
         filereader = csv.DictReader(input_file, fieldnames=['name','email','category','price','date'])
 
